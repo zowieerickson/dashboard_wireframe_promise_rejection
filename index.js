@@ -1,3 +1,6 @@
+// Calling Unsplash API
+// Getting background image & author name
+
 fetch("https://api.unsplash.com/photos/random?orientation=landscape&query=nature&client_id=RYD8BDXw36XxEEc0URIbaQgqlXvKGmM7gRqmB9fzG3E")
     .then(rsp => rsp.json())
     .then(data => {
@@ -13,3 +16,17 @@ fetch("https://api.unsplash.com/photos/random?orientation=landscape&query=nature
         document.body.style.backgroundImage = `url(${defaultImg})`;
         document.querySelector("#author").textContent = defaultAuthor;
     })
+
+
+// Calling CoinGecko API
+// Getting crypto name, image, and price
+
+fetch("https://api.coingecko.com/api/v3/coins/crypto-com-chain")
+    .then(rsp => rsp.json())
+    .then(data => {
+        console.log(data);
+        const name = data.name;
+        const image = data.image.small;
+        const price = data.market_data.current_price.usd;
+    })
+    .catch(err => console.log(err))
