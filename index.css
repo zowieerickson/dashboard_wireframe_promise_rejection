@@ -8,7 +8,6 @@ html, body {
 }
 
 body {
-    padding: 0 1em;
     background: no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -24,6 +23,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 1em;
 }
 
 .top {
@@ -33,4 +33,13 @@ main {
 
 h1.time {
     align-self: center;
+}
+
+#crypto-top {
+    display: flex;
+    align-items: center;
+}
+
+.crypto-name {
+    margin-left: .5em;
 }
