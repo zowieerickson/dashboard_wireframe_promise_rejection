@@ -43,3 +43,12 @@ h1.time {
 .crypto-name {
     margin-left: .5em;
 }
+
+#weather {
+    display: flex;
+    align-items: flex-start;
+}
+
+.weather-icon {
+    width: 50px;
+}

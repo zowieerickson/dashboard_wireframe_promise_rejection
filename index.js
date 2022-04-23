@@ -50,7 +50,15 @@ function callOpenWeatherApi() {
             }
             return rsp.json();
         })
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data);
+            const weatherIconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+            console.log(weatherIconUrl);
+            document.querySelector("#weather").innerHTML = `
+            <img class="weather-icon" src=${weatherIconUrl} alt=${data.weather[0].main} />
+            <p>${data.main.temp}</p>
+            `
+        })
         .catch(err => console.error(err))
     }
 
