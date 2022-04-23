@@ -31,6 +31,10 @@ main {
     justify-content: space-between;
 }
 
+#author {
+    text-transform: capitalize;
+}
+
 h1.time {
     align-self: center;
 }
@@ -52,3 +56,4 @@ h1.time {
 .weather-icon {
     width: 50px;
 }
+

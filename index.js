@@ -6,8 +6,13 @@ let lat;
 fetch("https://api.unsplash.com/photos/random?orientation=landscape&query=nature&client_id=RYD8BDXw36XxEEc0URIbaQgqlXvKGmM7gRqmB9fzG3E")
     .then(rsp => rsp.json())
     .then(data => {
-        document.querySelector("#author").textContent = data.user.name
-        document.body.style.backgroundImage = `url(${data.urls.full})`
+        const imageAuthor = document.querySelector("#author");
+        document.body.style.backgroundImage = `url(${data.urls.full})`;
+        imageAuthor.textContent = data.user.name;
+        // The image author's name isn't consistent, sometimes it would be all lowercase or all uppercase
+        imageAuthor.toString().toLowerCase();
+        console.log(imageAuthor.textContent);
+
     })
     .catch(err => {
         console.log(err)
@@ -16,7 +21,9 @@ fetch("https://api.unsplash.com/photos/random?orientation=landscape&query=nature
         const defaultAuthor = 'Cristina Gottardi';
 
         document.body.style.backgroundImage = `url(${defaultImg})`;
-        document.querySelector("#author").textContent = defaultAuthor;
+        // const imageAuthor = document.querySelector("#author");
+        // console.log(imageAuthor);
+        imageAuthor.textContent = defaultAuthor;
     })
 
 
@@ -53,9 +60,11 @@ function callOpenWeatherApi() {
         .then(data => {
             console.log(data);
             const weatherIconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+            const weatherDescription = data.weather[0].description;
             console.log(weatherIconUrl);
+            console.log(weatherDescription)
             document.querySelector("#weather").innerHTML = `
-            <img class="weather-icon" src=${weatherIconUrl} alt=${data.weather[0].main} />
+            <img class="weather-icon" src=${weatherIconUrl} alt="${weatherDescription}" />
             <p>${data.main.temp}</p>
             `
         })
