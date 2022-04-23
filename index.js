@@ -35,11 +35,33 @@ fetch("https://api.coingecko.com/api/v3/coins/crypto-com-chain")
             <p class="crypto-name">${name}</p>
         </div>
         <p class="crypto-price">$${price.toFixed(4)}</p>
-        `
+        `;
+        const cryptoPrice = document.querySelector(".crypto-price");
+
+
     })
     .catch(err => console.log(err))
 
 
-const date = new Date();
-const currentTime = date.toLocaleTimeString('en-US', {timeStyle: "short"});
-document.querySelector(".time").textContent = currentTime;
+// const date = new Date();
+// // const currentTime = date.toLocaleTimeString('en-US', {timeStyle: "short"});
+// const currentTime = date.toLocaleTimeString('en-US');
+// document.querySelector(".time").textContent = currentTime;
+
+function refresh(delay, refreshCallback) {
+    const refreshRate = delay;
+    const changeTime = setTimeout(() => {
+        refreshCallback()
+    }, refreshRate);
+}
+
+function displayTime() {
+    const date = new Date();
+    const currentTime = date.toLocaleTimeString('en-US', {timeStyle: "short"});
+    document.querySelector(".time").textContent = currentTime;
+    refresh(1000, displayTime)
+}
+
+
+
+displayTime()
