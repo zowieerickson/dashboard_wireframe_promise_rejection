@@ -38,3 +38,8 @@ fetch("https://api.coingecko.com/api/v3/coins/crypto-com-chain")
         `
     })
     .catch(err => console.log(err))
+
+
+const date = new Date();
+const currentTime = date.toLocaleTimeString('en-US', {timeStyle: "short"});
+document.querySelector(".time").textContent = currentTime;
