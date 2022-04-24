@@ -64,8 +64,11 @@ function callOpenWeatherApi() {
             console.log(weatherIconUrl);
             console.log(weatherDescription)
             document.querySelector("#weather").innerHTML = `
-            <img class="weather-icon" src=${weatherIconUrl} alt="${weatherDescription}" />
-            <p>${data.main.temp}</p>
+            <div class="flex">
+                <img class="weather-icon" src=${weatherIconUrl} alt="${weatherDescription}" />
+                <p>${data.main.temp.toFixed(0)}</p>
+            </div>
+            <p>${data.name}</p>
             `
         })
         .catch(err => console.error(err))
